@@ -53,7 +53,7 @@ export const Navigation = () => {
             !focused ? (
               <BenefitsTabIcon size={60} />
             ) : (
-              <BenefitsTabNotFocusedIcon size={50} />
+              <BenefitsTabNotFocusedIcon size={60} />
             ),
         }}
       />
