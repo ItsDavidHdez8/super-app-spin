@@ -1,7 +1,7 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {benefitsStyles} from '../../styles/Loyalty/Benefits/Benefits.styles';
-import Text from '../Text/Text';
+import Text from '../../../library/Text/Text';
 
 type Props = {
   images: ImagesProps;

@@ -1,7 +1,7 @@
 import {View, StyleSheet, Platform, Image} from 'react-native';
 import React from 'react';
-import Tag from '../atoms/Tag';
-import Text from '../Text/Text';
+import Tag from '../../../library/atoms/Tag';
+import Text from '../../../library/Text/Text';
 
 type Props = {
   icon: React.ReactNode;

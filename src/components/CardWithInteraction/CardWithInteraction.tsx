@@ -1,8 +1,8 @@
 import {View, Image, StyleSheet, Platform} from 'react-native';
 import React from 'react';
-import Text from '../Text/Text';
+import Text from '../../../library/Text/Text';
 import CheckIcon from '../../assets/Benefits/Check';
-import ProgressBar from '../atoms/ProgressBar';
+import ProgressBar from '../../../library/atoms/ProgressBar';
 
 type Props = {
   img?: ImageType;
