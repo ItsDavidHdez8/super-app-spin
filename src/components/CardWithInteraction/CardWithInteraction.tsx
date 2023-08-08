@@ -11,7 +11,7 @@ type Props = {
   imgInteractive: ImagesInteractives;
   count: number;
   total: number;
-  unit: Unit;
+  unit?: Unit;
 };
 
 type Unit = 'currency' | 'unit';
@@ -177,6 +177,8 @@ const styles = StyleSheet.create({
 
   text: {
     lineHeight: 20,
+    fontSize: 18,
+    letterSpacing: 0.2,
   },
 
   textBold: {

@@ -1,4 +1,4 @@
-import {Image, View, StyleSheet, ScrollView} from 'react-native';
+import {Image, View, ScrollView} from 'react-native';
 import React, {useContext} from 'react';
 import Text from '../../library/components/Text/Text';
 import {benefitsStyles} from '../styles/Loyalty/Benefits/Benefits.styles';
@@ -29,12 +29,19 @@ export const Benefits = () => {
         <View style={benefitsStyles.pointsContainer}>
           <View>
             <Text style={benefitsStyles.titlePoints}>10,657 puntos</Text>
-            <Tag text={`Valen $${value}`} variant="points" size="large" />
+            <View style={benefitsStyles.tagPoints}>
+              <Tag
+                leftIcon={require('../assets/Benefits/TagIconPoints.png')}
+                text={`Valen $${value}`}
+                variant="points"
+                size="large"
+              />
+            </View>
           </View>
           <View>
             <Image
               source={require('../assets/Benefits/SpinPremia.png')}
-              style={{width: 75, height: 75}}
+              style={benefitsStyles.img}
             />
           </View>
         </View>
@@ -70,7 +77,7 @@ export const Benefits = () => {
           title="Acomula productos"
           desc="Llévate tus favoritos de regalo al juntar tus sellos"
           showMore={true}>
-          <ScrollView horizontal={true}>
+          <ScrollView horizontal={true} style={benefitsStyles.scrolls}>
             <CardWithInteraction
               img={images.product}
               text="Ya puedes cambiar tu Casillero del Diablo Belight de 750 ml"
@@ -89,17 +96,12 @@ export const Benefits = () => {
             />
           </ScrollView>
         </CardBenefit>
-        <View>
-          <View style={benefitsStyles.titleContainerSection}>
-            <Text style={benefitsStyles.titleSection}>Gana más puntos</Text>
-            <Text variant="text-link-one" style={{fontWeight: '600'}}>
-              Mostrar más
-            </Text>
-          </View>
-          <Text variant="content-one-medium">
-            Elige productos participantes y en el total de tu compra gana puntos
-            adicionales
-          </Text>
+        <CardBenefit
+          images={images}
+          title="Gana más puntos"
+          desc="Elige productos participantes y en el total de tu compra gana puntos
+            adicionales"
+          showMore={true}>
           <ScrollView horizontal={true}>
             <CardWithoutInteraction
               icon={<OxxoLogo size={36} />}
@@ -116,13 +118,19 @@ export const Benefits = () => {
               date="01 / 03 / 2023"
             />
           </ScrollView>
-        </View>
+        </CardBenefit>
+        <View
+          style={[
+            benefitsStyles.lineSeparator,
+            {marginBottom: 5, marginTop: 10},
+          ]}
+        />
         <CardBenefit
           images={images}
           title="Suma al comprar"
           desc="Llega a la meta al acumular tus compras y obtén recompensas de regalo"
           showMore={true}>
-          <ScrollView horizontal={true}>
+          <ScrollView horizontal={true} style={benefitsStyles.scrolls}>
             <CardWithInteraction
               img={images.product}
               text="Ya puedes cambiar tu Casillero del Diablo Belight de 750 ml"
@@ -143,15 +151,20 @@ export const Benefits = () => {
             />
           </ScrollView>
         </CardBenefit>
+        <View style={benefitsStyles.lineSeparator} />
+        <View>
+          <ScrollView horizontal={true} style={benefitsStyles.scrolls}>
+            <Image
+              style={benefitsStyles.cardImg}
+              source={require('../assets/Benefits/SpinPremiaCard.jpg')}
+            />
+            <Image
+              style={benefitsStyles.cardImg}
+              source={require('../assets/Benefits/SpinPremiaCard.jpg')}
+            />
+          </ScrollView>
+        </View>
       </View>
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  box: {
-    height: 200,
-    width: 300,
-    padding: 10,
-  },
-});

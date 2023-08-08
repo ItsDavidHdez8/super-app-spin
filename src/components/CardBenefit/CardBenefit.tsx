@@ -1,6 +1,5 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {benefitsStyles} from '../../styles/Loyalty/Benefits/Benefits.styles';
 import Text from '../../../library/components/Text/Text';
 
 type Props = {
@@ -23,15 +22,17 @@ export const CardBenefit = ({
 }: Props) => {
   return (
     <View>
-      <View style={benefitsStyles.titleContainerSection}>
-        <Text style={benefitsStyles.titleSection}>{title}</Text>
+      <View style={styles.titleContainerSection}>
+        <Text style={styles.titleSection}>{title}</Text>
         {showMore ? (
           <Text variant="text-link-one" style={styles.text}>
             Mostrar más
           </Text>
         ) : null}
       </View>
-      <Text variant="content-one-medium">{desc}</Text>
+      <Text variant="content-one-medium" style={styles.desc}>
+        {desc}
+      </Text>
       {children}
     </View>
   );
@@ -39,6 +40,28 @@ export const CardBenefit = ({
 
 const styles = StyleSheet.create({
   text: {
-    fontWeight: '600',
+    fontWeight: '700',
+    letterSpacing: 0.2,
+  },
+
+  titleContainerSection: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 35,
+    marginBottom: 10,
+  },
+
+  titleSection: {
+    fontSize: 22,
+    lineHeight: 24,
+    fontWeight: '500',
+    fontFamily: 'Poppins',
+    marginBottom: 10,
+    letterSpacing: 0.6,
+  },
+
+  desc: {
+    fontSize: 17,
   },
 });

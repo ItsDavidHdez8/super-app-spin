@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   },
 
   date: {
-    fontSize: 12,
+    fontSize: 13,
     lineHeight: 16,
     fontWeight: '400',
     color: '#69698B',
