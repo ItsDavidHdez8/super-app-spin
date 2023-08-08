@@ -2,7 +2,7 @@ import {SafeAreaView, View} from 'react-native';
 import React from 'react';
 import MobileHome from '../assets/Home/Mobile';
 import {homeStyles} from '../styles/Loyalty/Home/Home.styles';
-import Text from '../../library/Text/Text';
+import Text from '../../library/components/Text/Text';
 
 export const Home = () => {
   return (

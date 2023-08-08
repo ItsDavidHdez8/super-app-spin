@@ -1,15 +1,19 @@
 import {Image, View, StyleSheet, ScrollView} from 'react-native';
-import React from 'react';
-import Text from '../../library/Text/Text';
+import React, {useContext} from 'react';
+import Text from '../../library/components/Text/Text';
 import {benefitsStyles} from '../styles/Loyalty/Benefits/Benefits.styles';
-import StackedCardGrid from '../../library/GridView/StackedCardGrid';
-import Tag from '../../library/atoms/Tag';
+import StackedCardGrid from '../../library/components/GridView/StackedCardGrid';
+import Tag from '../../library/components/atoms/Tag';
 import {CardWithInteraction} from '../components/CardWithInteraction/CardWithInteraction';
 import OxxoLogo from '../assets/Benefits/OxxoLogo';
 import {CardBenefit} from '../components/CardBenefit/CardBenefit';
 import {CardWithoutInteraction} from '../components/CardWithoutInteraction/CardWithoutInteraction';
+import {AppContext} from '../context/AppContext';
 
 export const Benefits = () => {
+  const {appState} = useContext(AppContext);
+
+  console.log(appState);
   const value: string = '156.00';
 
   const images = {

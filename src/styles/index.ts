@@ -1,15 +1,15 @@
 import {
   DarkTheme as SpinPlusDarkTheme,
   LightTheme as SpinPlusLightTheme,
-} from './spinplus';
+} from '../../library/styles/spinplus';
 import {
   DarkTheme as TenderosDarkTheme,
   LightTheme as TenderosLightTheme,
-} from './tenderos';
-import * as SpinPlusTypography from './spinplus/Typography';
-import * as TenderosTypography from './tenderos/Typography';
-import { ThemeVariant } from '../theme/types';
-import { ThemePaletteTypes } from './types';
+} from '../../library/styles/tenderos';
+import * as SpinPlusTypography from '../../library/styles/spinplus/Typography';
+import * as TenderosTypography from '../../library/styles/tenderos/Typography';
+import {ThemeVariant} from '../../library/themes/types';
+import {ThemePaletteTypes} from './types';
 
 export const getColors = (isLightTheme: boolean, variant: ThemeVariant) => {
   const themeMapping = {
