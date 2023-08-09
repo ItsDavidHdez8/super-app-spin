@@ -9,18 +9,17 @@ import OxxoLogo from '../assets/Benefits/OxxoLogo';
 import {CardBenefit} from '../components/CardBenefit/CardBenefit';
 import {CardWithoutInteraction} from '../components/CardWithoutInteraction/CardWithoutInteraction';
 import {AppContext} from '../context/AppContext';
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {RootStackParamList} from '../interfaces/navigation';
+import {IMAGES} from '../utils/constants';
 
 export const Benefits = () => {
   const {appState} = useContext(AppContext);
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   console.log(appState);
   const value: string = '156.00';
-
-  const images = {
-    product: require('../assets/Benefits/Product.jpg'),
-    product2: require('../assets/Benefits/Product2.png'),
-    product3: require('../assets/Benefits/Product3.jpg'),
-  };
 
   return (
     <ScrollView>
@@ -67,19 +66,19 @@ export const Benefits = () => {
                     style={{width: 75, height: 75}}
                   />
                 ),
-                onPress: () => console.log('hello word'),
+                onPress: () => navigation.navigate('ChangePoints'),
               },
             ]}
           />
         </View>
         <CardBenefit
-          images={images}
+          images={IMAGES}
           title="Acomula productos"
           desc="Llévate tus favoritos de regalo al juntar tus sellos"
           showMore={true}>
           <ScrollView horizontal={true} style={benefitsStyles.scrolls}>
             <CardWithInteraction
-              img={images.product}
+              img={IMAGES.product}
               text="Ya puedes cambiar tu Casillero del Diablo Belight de 750 ml"
               icon={<OxxoLogo size={36} />}
               imgInteractive="check"
@@ -87,7 +86,7 @@ export const Benefits = () => {
               total={5}
             />
             <CardWithInteraction
-              img={images.product}
+              img={IMAGES.product}
               text="Ya puedes cambiar tu Casillero del Diablo Belight de 750 ml"
               icon={<OxxoLogo size={36} />}
               imgInteractive="check"
@@ -97,7 +96,7 @@ export const Benefits = () => {
           </ScrollView>
         </CardBenefit>
         <CardBenefit
-          images={images}
+          images={IMAGES}
           title="Gana más puntos"
           desc="Elige productos participantes y en el total de tu compra gana puntos
             adicionales"
@@ -106,14 +105,14 @@ export const Benefits = () => {
             <CardWithoutInteraction
               icon={<OxxoLogo size={36} />}
               points={120}
-              img={images.product2}
+              img={IMAGES.product2}
               title="Galletas principe marinela"
               date="01 / 03 / 2023"
             />
             <CardWithoutInteraction
               icon={<OxxoLogo size={36} />}
               points={320}
-              img={images.product3}
+              img={IMAGES.product3}
               title="Regio Luxury 18 rollos"
               date="01 / 03 / 2023"
             />
@@ -126,13 +125,13 @@ export const Benefits = () => {
           ]}
         />
         <CardBenefit
-          images={images}
+          images={IMAGES}
           title="Suma al comprar"
           desc="Llega a la meta al acumular tus compras y obtén recompensas de regalo"
           showMore={true}>
           <ScrollView horizontal={true} style={benefitsStyles.scrolls}>
             <CardWithInteraction
-              img={images.product}
+              img={IMAGES.product}
               text="Ya puedes cambiar tu Casillero del Diablo Belight de 750 ml"
               icon={<OxxoLogo size={36} />}
               imgInteractive="line"
@@ -141,7 +140,7 @@ export const Benefits = () => {
               unit="currency"
             />
             <CardWithInteraction
-              img={images.product}
+              img={IMAGES.product}
               text="Ya puedes cambiar tu Casillero del Diablo Belight de 750 ml"
               icon={<OxxoLogo size={36} />}
               imgInteractive="line"

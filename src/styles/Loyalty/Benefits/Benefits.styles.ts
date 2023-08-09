@@ -69,6 +69,6 @@ export const benefitsStyles = StyleSheet.create({
   },
 
   scrolls: {
-    width: 1000,
+    width: 'auto',
   },
 });
