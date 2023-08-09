@@ -11,12 +11,19 @@ import BenefitsTabIcon from '../assets/Home/BenefitsTab';
 import BenefitsTabNotFocusedIcon from '../assets/Home/BenefitsTabNotFocused';
 import WalletTabIcon from '../assets/Home/WalletTab';
 import AccountTabIcon from '../assets/Home/AccountTab';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import ChangePoints from '../screens/ChangePoints';
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 export const Navigation = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName="Home">
       <Tab.Screen
         component={Home}
         name="Home"
@@ -88,5 +95,22 @@ export const Navigation = () => {
         }}
       />
     </Tab.Navigator>
+  );
+};
+
+export const Navigator = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={Navigation}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ChangePoints"
+        component={ChangePoints}
+        options={{headerShown: false}}
+      />
+    </Stack.Navigator>
   );
 };
