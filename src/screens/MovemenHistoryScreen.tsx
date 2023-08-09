@@ -1,19 +1,26 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Animated, SafeAreaView, useWindowDimensions } from 'react-native'
-import TabBar from '../components/TabBar/TabBar'
 import { SceneMap } from 'react-native-tab-view';
 import { HistoryList } from '../components/HistoryList/HistoryList';
+import TabBar from '../../library/components/TabBar/TabBar';
+import { AppContext } from '../context/AppContext';
 
 export const MovemenHistoryScreen = () => {
 
+  const {} = useContext(AppContext);
+
   const layout = useWindowDimensions();
 
-  const [index, setIndex] = React.useState(0);
+  const [index, setIndex] = useState(0);
   const [routes] = React.useState([
     { key: 'first', title: 'Info' },
     { key: 'second', title: 'Precios' },
   ]);
 
+  useEffect(() => {
+    
+  }, [])
+  
 
   const all = () => (
     <HistoryList/>

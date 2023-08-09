@@ -9,6 +9,10 @@ import OxxoLogo from '../assets/Benefits/OxxoLogo';
 import {CardBenefit} from '../components/CardBenefit/CardBenefit';
 import {CardWithoutInteraction} from '../components/CardWithoutInteraction/CardWithoutInteraction';
 import {AppContext} from '../context/AppContext';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParams } from '../navigation/RootStack';
+
+
 
 export const Benefits = () => {
   const {appState} = useContext(AppContext);
@@ -57,7 +61,7 @@ export const Benefits = () => {
                     style={{width: 75, height: 75}}
                   />
                 ),
-                onPress: () => console.log('hello word'),
+                onPress: () => {},
               },
               {
                 title: 'Cambia tus puntos',

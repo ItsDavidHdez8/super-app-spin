@@ -3,7 +3,7 @@ import apiDB from '../api/apiDB'
 
 export const useFetch = () => {
 
-  const getHistory = async () => {
+  const fetchHistory = async () => {
     try {
       const resp = await apiDB.get("/history")
       const data = resp.data;
@@ -13,5 +13,5 @@ export const useFetch = () => {
     }
   }
 
-  return {getHistory}
+  return {fetchHistory}
 }
