@@ -10,6 +10,7 @@ import HomeTabNotFocusedIcon from '../assets/Home/HomeTabNotFocused';
 import BenefitsTabIcon from '../assets/Home/BenefitsTab';
 import BenefitsTabNotFocusedIcon from '../assets/Home/BenefitsTabNotFocused';
 import WalletTabIcon from '../assets/Home/WalletTab';
+import AccountTabNotFocusedIcon from '../assets/Home/AccountTabNotFocused';
 import AccountTabIcon from '../assets/Home/AccountTab';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ChangePoints from '../screens/ChangePoints';
@@ -92,7 +93,12 @@ export const Navigation = () => {
           },
           tabBarLabel: 'Cuenta',
           headerShown: false,
-          tabBarIcon: () => <AccountTabIcon size={24} />,
+          tabBarIcon: ({focused}) =>
+            !focused ? (
+              <AccountTabIcon size={60} />
+            ) : (
+              <AccountTabNotFocusedIcon size={60} />
+            ),
         }}
       />
     </Tab.Navigator>
