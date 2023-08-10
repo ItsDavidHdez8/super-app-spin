@@ -58,16 +58,6 @@ export const benefitsStyles = StyleSheet.create({
     height: 145,
   },
 
-  lineSeparator: {
-    width: 1000,
-    borderColor: '#E6E6EC',
-    height: 1,
-    borderWidth: 1,
-    marginBottom: 25,
-    marginLeft: -20,
-    marginRight: 100,
-  },
-
   scrolls: {
     width: 'auto',
   },

@@ -4,8 +4,10 @@ import Text from '../../library/components/Text/Text';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {CardShowBrand} from '../components/CardShowBrand/CardShowBrand';
 import {IMAGES} from '../utils/constants';
+import {useCustomNavigation} from '../hooks/useCustomNavigation';
 
 const ChangePoints = () => {
+  const navigation = useCustomNavigation();
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>
@@ -15,19 +17,19 @@ const ChangePoints = () => {
         img={IMAGES.volarisLogo}
         brand="Volaris"
         catalog="Movilidad"
-        handlerFunc={() => console.log('hello word')}
+        handlerFunc={() => navigation.navigate('Balance')}
       />
       <CardShowBrand
         img={IMAGES.smartFitLogo}
         brand="Smart Fit"
         catalog="Deportes"
-        handlerFunc={() => console.log('hello word')}
+        handlerFunc={() => navigation.navigate('Balance')}
       />
       <CardShowBrand
         img={IMAGES.vixLogo}
         brand="VIX"
         catalog="Entretenimiento"
-        handlerFunc={() => console.log('hello word')}
+        handlerFunc={() => navigation.navigate('Balance')}
       />
     </SafeAreaView>
   );

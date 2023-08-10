@@ -288,7 +288,7 @@ const NewBaseTextInput = forwardRef<
             <View style={themedStyle.messageContainer}>
               <Text
                 variant="extra-small-body"
-                style={themedStyle.bottomMessage}>
+                style={[themedStyle.bottomMessage, {marginLeft: -15}]}>
                 {bottomMessage}
               </Text>
             </View>

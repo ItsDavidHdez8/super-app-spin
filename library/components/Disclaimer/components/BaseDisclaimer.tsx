@@ -65,7 +65,7 @@ const styles = (theme: ThemeType) =>
       alignItems: 'stretch',
       justifyContent: 'space-evenly',
       flexDirection: 'row',
-      width: '90%',
+      width: '100%',
       alignSelf: 'center',
       borderRadius: 5,
       paddingRight: 20,
@@ -75,6 +75,7 @@ const styles = (theme: ThemeType) =>
     },
     inconContainer: {
       flex: 1,
+      alignSelf: 'center',
     },
     textContainer: {
       flex: 9,

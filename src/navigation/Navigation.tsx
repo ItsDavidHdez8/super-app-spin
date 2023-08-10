@@ -13,6 +13,7 @@ import WalletTabIcon from '../assets/Home/WalletTab';
 import AccountTabIcon from '../assets/Home/AccountTab';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ChangePoints from '../screens/ChangePoints';
+import {Balance} from '../screens/Balance';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -109,6 +110,11 @@ export const Navigator = () => {
       <Stack.Screen
         name="ChangePoints"
         component={ChangePoints}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Balance"
+        component={Balance}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

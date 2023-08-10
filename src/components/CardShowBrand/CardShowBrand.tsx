@@ -22,7 +22,7 @@ type Images = {
 
 export const CardShowBrand = ({img, brand, catalog, handlerFunc}: Props) => {
   return (
-    <View style={styles.parent}>
+    <TouchableOpacity style={styles.parent} onPress={handlerFunc}>
       <View style={styles.card}>
         <View style={styles.infoContainer}>
           <Image style={styles.img} source={img} />
@@ -31,11 +31,11 @@ export const CardShowBrand = ({img, brand, catalog, handlerFunc}: Props) => {
             <Text style={styles.catalog}>{catalog}</Text>
           </View>
         </View>
-        <TouchableOpacity style={styles.button} onPress={handlerFunc}>
+        <View style={styles.button}>
           <RightArrow size={24} />
-        </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -9,14 +9,13 @@ import OxxoLogo from '../assets/Benefits/OxxoLogo';
 import {CardBenefit} from '../components/CardBenefit/CardBenefit';
 import {CardWithoutInteraction} from '../components/CardWithoutInteraction/CardWithoutInteraction';
 import {AppContext} from '../context/AppContext';
-import {useNavigation} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackParamList} from '../interfaces/navigation';
 import {IMAGES} from '../utils/constants';
+import {useCustomNavigation} from '../hooks/useCustomNavigation';
+import {LineSeparator} from '../components/LineSeparator/LineSeparator';
 
 export const Benefits = () => {
   const {appState} = useContext(AppContext);
-  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+  const navigation = useCustomNavigation();
 
   console.log(appState);
   const value: string = '156.00';
@@ -118,12 +117,7 @@ export const Benefits = () => {
             />
           </ScrollView>
         </CardBenefit>
-        <View
-          style={[
-            benefitsStyles.lineSeparator,
-            {marginBottom: 5, marginTop: 10},
-          ]}
-        />
+        <LineSeparator style={{marginBottom: 5, marginTop: 10}} />
         <CardBenefit
           images={IMAGES}
           title="Suma al comprar"
@@ -150,7 +144,7 @@ export const Benefits = () => {
             />
           </ScrollView>
         </CardBenefit>
-        <View style={benefitsStyles.lineSeparator} />
+        <LineSeparator />
         <View>
           <ScrollView horizontal={true} style={benefitsStyles.scrolls}>
             <Image
