@@ -15,14 +15,15 @@ export const Balance = () => {
   const {points} = useContext(AppContext);
   const [textInput, setTextInput] = useState('');
   const [buttonPress, setButtonPress] = useState('');
+  const inputNumber = Number(textInput);
 
-  const handlerPointsToCurrency = (totalPoints: number): string => {
-    if (totalPoints >= 10000) {
-      const currency = totalPoints - 9000;
-      return currency.toLocaleString('en');
-    }
+  const handlerPointsToCurrency = (totalPoints: number) => {
     const currency = totalPoints / 10;
-    return currency.toLocaleString('en');
+    const currencyFormat = currency.toLocaleString('en');
+    return {
+      currency,
+      currencyFormat,
+    };
   };
 
   const handlerMaxPointsValidation = (totalPoints: number): number => {
@@ -38,6 +39,8 @@ export const Balance = () => {
   };
 
   const pointsFormatted = points.toLocaleString('en');
+  const {currencyFormat, currency} = handlerPointsToCurrency(points);
+
   return (
     <View style={balanceStyles.container}>
       <View>
@@ -46,7 +49,7 @@ export const Balance = () => {
             <Text style={balanceStyles.title}>{pointsFormatted} puntos</Text>
             <Tag
               leftIcon={require('../assets/Benefits/TagIconPoints.png')}
-              text={`Valen $${handlerPointsToCurrency(points)}.00`}
+              text={`Valen $${currencyFormat}.00`}
               variant="points"
               size="large"
             />
@@ -150,11 +153,20 @@ export const Balance = () => {
                 : false
             }
             onChangeText={setTextInput}
-            style={balanceStyles.textInput}
+            style={[
+              balanceStyles.textInput,
+              {borderColor: inputNumber <= 1000 ? 'gray' : 'red'},
+            ]}
             bottomMessage="El valor minimo que puede cambiar es $20.00"
             inputAccessoryLabel="Listos"
             numericInput={true}
             keyboardType="numeric"
+            variant="numeric"
+            error={`${
+              inputNumber <= 1000 || buttonPress !== ''
+                ? ''
+                : 'El valor máximo que puedes cambiar es $1,000.00'
+            }`}
             onTouchStart={() => {
               setButtonPress('');
             }}
@@ -179,7 +191,8 @@ export const Balance = () => {
             console.log('Hello world');
           }}
           disabled={
-            handlerMaxPointsValidation(points) !== 0 && buttonPress !== ''
+            (handlerMaxPointsValidation(points) !== 0 && buttonPress !== '') ||
+            inputNumber <= 1000
               ? false
               : true
           }
