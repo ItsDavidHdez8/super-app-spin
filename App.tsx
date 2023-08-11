@@ -4,6 +4,7 @@ import ThemeProvider from './library/themes/ThemeProvider';
 import {NavigationContainer} from '@react-navigation/native';
 import {Navigator} from './src/navigation/Navigation';
 import {AppProvider} from './src/context/AppProvider';
+import {Modal} from './src';
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <NavigationContainer>
         <ThemeProvider>
           <Navigator />
+          <Modal.Component />
         </ThemeProvider>
       </NavigationContainer>
     </AppProvider>

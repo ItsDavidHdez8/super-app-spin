@@ -48,9 +48,9 @@ import {
   Container,
   createNavigator,
 } from '@digitaltitransversal/tr_superapp_core';
-import { Modal } from '@digitaltitransversal/tr_superapp_theme';
+import {Modal} from '@digitaltitransversal/tr_superapp_theme';
 
-const { Navigator } = createNavigator();
+const {Navigator} = createNavigator();
 
 export default function App() {
   return (
