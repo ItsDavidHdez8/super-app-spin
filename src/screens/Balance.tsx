@@ -19,10 +19,13 @@ export const Balance = () => {
 
   const handlerPointsToCurrency = (totalPoints: number) => {
     const currency = totalPoints / 10;
-    const currencyFormat = currency.toLocaleString('en');
+    const currencyFormat = currency.toLocaleString('es-MX', {
+      maximumFractionDigits: 2,
+      minimumFractionDigits: 2,
+    });
     return {
-      currency,
       currencyFormat,
+      currency,
     };
   };
 
@@ -49,7 +52,7 @@ export const Balance = () => {
             <Text style={balanceStyles.title}>{pointsFormatted} puntos</Text>
             <Tag
               leftIcon={require('../assets/Benefits/TagIconPoints.png')}
-              text={`Valen $${currencyFormat}.00`}
+              text={`Valen $${currencyFormat}`}
               variant="points"
               size="large"
             />
@@ -62,7 +65,7 @@ export const Balance = () => {
         <LineSeparator style={{marginTop: 15}} />
         <View style={balanceStyles.containerInfo}>
           <Text style={balanceStyles.text}>
-            Escribe el valor de los puntos que quieres cambiar
+            Elige o escribe el valor de los puntos que quieres cambiar
           </Text>
           {handlerMaxPointsValidation(points) === 2 ? (
             <View style={balanceStyles.buttonsContainer}>
@@ -157,7 +160,7 @@ export const Balance = () => {
               balanceStyles.textInput,
               {borderColor: inputNumber <= 1000 ? 'gray' : 'red'},
             ]}
-            bottomMessage="El valor minimo que puede cambiar es $20.00"
+            bottomMessage="El valor mínimo que puedes cambiar es $20.00"
             inputAccessoryLabel="Listos"
             numericInput={true}
             keyboardType="numeric"
