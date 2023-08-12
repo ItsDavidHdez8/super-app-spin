@@ -42,9 +42,8 @@ export const Balance = () => {
   };
 
   const pointsFormatted = points.toLocaleString('en');
-  const {currencyFormat, currency} = handlerPointsToCurrency(points);
+  const {currencyFormat} = handlerPointsToCurrency(points);
 
-  console.log(handlerMaxPointsValidation(points));
   return (
     <View style={balanceStyles.container}>
       <View>

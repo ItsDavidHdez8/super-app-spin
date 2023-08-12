@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
-import {Button, TouchableOpacity, View, Text, Image} from 'react-native';
+import {TouchableOpacity, View, Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Home} from '../screens/Home';
 import {Benefits} from '../screens/Benefits';
