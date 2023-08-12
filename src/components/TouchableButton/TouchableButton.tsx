@@ -13,11 +13,11 @@ type Props = {
   backgroundColorOnPress?: string;
   color?: string;
   colorOnPress?: string;
+  onPress?: () => void;
 };
 
 export const TouchableButton = ({
   buttonPress,
-  setButtonPress,
   text,
   desc,
   state,
@@ -25,11 +25,12 @@ export const TouchableButton = ({
   backgroundColorOnPress = '#E0E0FF',
   color = 'black',
   colorOnPress = '#1723D3',
+  onPress,
 }: Props) => {
   return (
     <View style={[styles.cardButton, {marginRight: 7}]}>
       <TouchableOpacity
-        onPress={() => setButtonPress(state)}
+        onPress={onPress}
         style={[
           styles.button,
           {

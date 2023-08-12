@@ -144,7 +144,7 @@ export const Navigator = () => {
           header: () => (
             <NavBar
               variant={'primary'}
-              title={'Cambia tus puntoss'}
+              title={'Cambia tus puntos'}
               leftSection={
                 <View
                   style={{

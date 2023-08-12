@@ -15,7 +15,7 @@ export const Balance = () => {
   const {points} = useContext(AppContext);
   const [textInput, setTextInput] = useState('');
   const [buttonPress, setButtonPress] = useState('');
-  const inputNumber = Number(textInput);
+  let inputNumber = Number(textInput);
 
   const handlerPointsToCurrency = (totalPoints: number) => {
     const currency = totalPoints / 10;
@@ -44,6 +44,7 @@ export const Balance = () => {
   const pointsFormatted = points.toLocaleString('en');
   const {currencyFormat, currency} = handlerPointsToCurrency(points);
 
+  console.log(handlerMaxPointsValidation(points));
   return (
     <View style={balanceStyles.container}>
       <View>
@@ -79,6 +80,10 @@ export const Balance = () => {
                 backgroundColorOnPress="#E0E0FF"
                 color="black"
                 colorOnPress="#1723D3"
+                onPress={() => {
+                  setButtonPress('50button');
+                  setTextInput('50');
+                }}
               />
               <TouchableButton
                 text="$100"
@@ -90,6 +95,10 @@ export const Balance = () => {
                 backgroundColorOnPress="#E0E0FF"
                 color="black"
                 colorOnPress="#1723D3"
+                onPress={() => {
+                  setButtonPress('100button');
+                  setTextInput('100');
+                }}
               />
             </View>
           ) : null}
@@ -106,6 +115,10 @@ export const Balance = () => {
                   backgroundColorOnPress="#E0E0FF"
                   color="black"
                   colorOnPress="#1723D3"
+                  onPress={() => {
+                    setButtonPress('50button');
+                    setTextInput('50');
+                  }}
                 />
                 <TouchableButton
                   text="$100"
@@ -117,6 +130,10 @@ export const Balance = () => {
                   backgroundColorOnPress="#E0E0FF"
                   color="black"
                   colorOnPress="#1723D3"
+                  onPress={() => {
+                    setButtonPress('100button');
+                    setTextInput('100');
+                  }}
                 />
               </View>
               <View style={balanceStyles.buttonsContainer}>
@@ -130,6 +147,10 @@ export const Balance = () => {
                   backgroundColorOnPress="#E0E0FF"
                   color="black"
                   colorOnPress="#1723D3"
+                  onPress={() => {
+                    setButtonPress('200button');
+                    setTextInput('200');
+                  }}
                 />
                 <TouchableButton
                   text="$500"
@@ -141,11 +162,18 @@ export const Balance = () => {
                   backgroundColorOnPress="#E0E0FF"
                   color="black"
                   colorOnPress="#1723D3"
+                  onPress={() => {
+                    setButtonPress('500button');
+                    setTextInput('500');
+                  }}
                 />
               </View>
             </>
           ) : null}
-          <Text style={[balanceStyles.text, {marginTop: 25}]}>Otro:</Text>
+          {handlerMaxPointsValidation(points) === 0 ||
+          handlerMaxPointsValidation(points) === 1 ? null : (
+            <Text style={[balanceStyles.text, {marginTop: 25}]}>Otro:</Text>
+          )}
           <TextInput
             placeHolder="Monto en pesos"
             label="Monto en pesos"
@@ -161,7 +189,7 @@ export const Balance = () => {
               {borderColor: inputNumber <= 1000 ? 'gray' : 'red'},
             ]}
             bottomMessage="El valor mínimo que puedes cambiar es $20.00"
-            inputAccessoryLabel="Listos"
+            inputAccessoryLabel="Listo"
             numericInput={true}
             keyboardType="numeric"
             variant="numeric"
@@ -175,7 +203,7 @@ export const Balance = () => {
             }}
           />
         </View>
-        {handlerMaxPointsValidation(points) !== 0 ? null : (
+        {handlerMaxPointsValidation(points) === 0 ? (
           <View style={balanceStyles.alertContainer}>
             <Disclaimer
               variant="warning"
@@ -185,7 +213,7 @@ export const Balance = () => {
               iconColor="blue"
             />
           </View>
-        )}
+        ) : null}
       </View>
       <View style={balanceStyles.buttonContainer}>
         <Button
@@ -194,8 +222,16 @@ export const Balance = () => {
             console.log('Hello world');
           }}
           disabled={
-            (handlerMaxPointsValidation(points) !== 0 && buttonPress !== '') ||
-            inputNumber <= 1000
+            handlerMaxPointsValidation(points) === 0 ||
+            (handlerMaxPointsValidation(points) === 1 &&
+              inputNumber >= 20 &&
+              inputNumber <= 1000) ||
+            (handlerMaxPointsValidation(points) === 2 &&
+              inputNumber >= 20 &&
+              inputNumber <= 1000) ||
+            (handlerMaxPointsValidation(points) === 3 &&
+              inputNumber >= 20 &&
+              inputNumber <= 1000)
               ? false
               : true
           }
