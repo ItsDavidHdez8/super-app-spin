@@ -7,6 +7,7 @@ export const homeStyles = StyleSheet.create({
     textAlign: 'center',
     height: '100%',
     alignItems: 'center',
+    backgroundColor: '#fff',
   },
 
   iconContainer: {

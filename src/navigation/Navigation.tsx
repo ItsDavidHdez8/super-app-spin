@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
+import {Button, TouchableOpacity, View, Text, Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Home} from '../screens/Home';
 import {Benefits} from '../screens/Benefits';
@@ -15,6 +16,9 @@ import AccountTabIcon from '../assets/Home/AccountTab';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ChangePoints from '../screens/ChangePoints';
 import {Balance} from '../screens/Balance';
+import NavBar from '../../library/components/NavBar/NavBar';
+import {useCustomNavigation} from '../hooks/useCustomNavigation';
+import {IMAGES} from '../utils/constants';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -106,6 +110,8 @@ export const Navigation = () => {
 };
 
 export const Navigator = () => {
+  const navigation = useCustomNavigation();
+
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -116,12 +122,50 @@ export const Navigator = () => {
       <Stack.Screen
         name="ChangePoints"
         component={ChangePoints}
-        options={{headerShown: false}}
+        options={{
+          header: () => (
+            <NavBar
+              variant={'primary'}
+              title={'Cambia tus puntos'}
+              leftSection={
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <Image source={IMAGES.leftArrow} />
+                  </TouchableOpacity>
+                </View>
+              }
+            />
+          ),
+        }}
       />
       <Stack.Screen
         name="Balance"
         component={Balance}
-        options={{headerShown: false}}
+        options={{
+          header: () => (
+            <NavBar
+              variant={'primary'}
+              title={'Cambia tus puntos'}
+              leftSection={
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <Image source={IMAGES.leftArrow} />
+                  </TouchableOpacity>
+                </View>
+              }
+            />
+          ),
+        }}
       />
     </Stack.Navigator>
   );

@@ -4,8 +4,8 @@ export const balanceStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    padding: 16,
-    paddingTop: 50,
+    paddingHorizontal: 16,
+    marginTop: -35,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -23,6 +23,7 @@ export const balanceStyles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 0.2,
     marginBottom: 10,
+    marginRight: 10,
   },
 
   textInput: {

@@ -13,7 +13,7 @@ interface AppProviderProps {
 
 export function AppProvider({children}: AppProviderProps) {
   const [appState, dispatch] = useReducer(appReducer, INITIAL_STATE);
-  const [points, setPoints] = useState(10200);
+  const [points, setPoints] = useState(1000);
   return (
     <AppContext.Provider
       value={{
