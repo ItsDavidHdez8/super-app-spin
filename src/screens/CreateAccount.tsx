@@ -15,7 +15,6 @@ const CreateAccount = () => {
     return () => clearInterval(timer);
   }, [counter]);
 
-  console.log(optText);
   return (
     <View style={styles.container}>
       <View>
