@@ -19,6 +19,7 @@ import {Balance} from '../screens/Balance';
 import NavBar from '../../library/components/NavBar/NavBar';
 import {useCustomNavigation} from '../hooks/useCustomNavigation';
 import {IMAGES} from '../utils/constants';
+import CreateAccount from '../screens/CreateAccount';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -146,6 +147,30 @@ export const Navigator = () => {
       <Stack.Screen
         name="Balance"
         component={Balance}
+        options={{
+          header: () => (
+            <NavBar
+              variant={'primary'}
+              title={'Cambia tus puntos'}
+              leftSection={
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <Image source={IMAGES.leftArrow} />
+                  </TouchableOpacity>
+                </View>
+              }
+            />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="CreateAccount"
+        component={CreateAccount}
         options={{
           header: () => (
             <NavBar

@@ -46,7 +46,8 @@ export const Account = () => {
               },
               secondButtonProps: {
                 text: 'En otro momento',
-                onPress: () => Modal.hide(),
+                onPress: () => navigation.navigate('CreateAccount'),
+                enableCloseOnPress: true,
               },
             });
           }}>
