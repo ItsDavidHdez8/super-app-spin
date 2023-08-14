@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {History, HistorySection} from '../interfaces/history';
+import {History, HistoryListState, HistorySection} from '../interfaces/history';
 import {ImageRequireSource} from 'react-native';
 
 const months: {[key: string]: number} = {
@@ -18,7 +18,7 @@ const months: {[key: string]: number} = {
 };
 
 export const useHistoryList = ({allMovements}: {allMovements: History[]}) => {
-  const [movements, setMovements] = useState({
+  const [movements, setMovements] = useState<HistoryListState>({
     step: 0,
     allMovements,
     sections : []
@@ -28,64 +28,79 @@ export const useHistoryList = ({allMovements}: {allMovements: History[]}) => {
     getMovementsInSections()
   }, [movements]);
 
-  // const getMovementsInSections : () => HistorySection[] = () => {
-  //   switch (movements.step) {
-  //     case 0:
+  const getMovementsInSections = () => {
+    switch (movements.step) {
+      case 0:
+        getFilteredMovements(new Date(), "Hoy");
+        break;
+      case 2:
+        getFilteredMovements(new Date(), "Ayer");
+        break;
+      case 3 : 
+        getFilteredMovements(new Date(), "Semana anterior")
 
+      default:
+        getFilteredMovements(new Date(), "Montly")
+        break;
+    }
+  }
 
-  //       break;
+  // const getMovementsInSections: () => HistorySection[] = () => {
+  //   const todayItems = getFilteredMovements(new Date());
+  //   const yesterday = new Date();
+  //   yesterday.setDate(yesterday.getDate() - 1);
+    
+  //   const lastWeek = getLastWeek();
+  //   const sections: HistorySection[] = [
+  //     {
+  //       title: 'Hoy',
+  //       data: todayItems,
+  //     },
+  //     {
+  //       title: 'Ayer',
+  //       data: yesterdayItems,
+  //     },
+  //     {
+  //       title: 'Semana anterior',
+  //       data: lastWeek,
+  //     },
+  //   ];
 
-  //     case 2:
-  //       break;
+  //   return sections;
+  // };
 
-  //     default:
-  //       break;
-  //   }
-  // }
+  // const getLastWeek = () => {
+  //   const today = new Date();
+  //   const startWeek = new Date(
+  //     today.getFullYear(),
+  //     today.getMonth(),
+  //     today.getDate() - 7,
+  //   );
+  //   return getFilteredMovements(startWeek, today);
+  // };
 
-  const getMovementsInSections: () => HistorySection[] = () => {
-    const todayItems = getFilteredMovements(new Date());
-    const yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-    const yesterdayItems = getFilteredMovements(yesterday);
-    const lastWeek = getLastWeek();
-    const sections: HistorySection[] = [
-      {
-        title: 'Hoy',
-        data: todayItems,
-      },
-      {
-        title: 'Ayer',
-        data: yesterdayItems,
-      },
-      {
-        title: 'Semana anterior',
-        data: lastWeek,
-      },
-    ];
-
-    return sections;
-  };
-
-  const getLastWeek = () => {
-    const today = new Date();
-    const startWeek = new Date(
-      today.getFullYear(),
-      today.getMonth(),
-      today.getDate() - 7,
-    );
-    return getFilteredMovements(startWeek, today);
-  };
-
-  const getMonths = (entity: History) => {};
-
-  const getFilteredMovements = (startDate: Date, endDate?: Date) => {
+  const getFilteredMovements = (startDate: Date, title : string, endDate?: Date) => {
     const filteredMovements = movements.allMovements.filter(movement => {
       const movementDate = getDate(movement);
+      
+
+
       return endDate
         ? movementDate >= startDate && movementDate <= endDate
         : movementDate.toDateString() === new Date().toDateString();
     });
+
+    setMovements({
+      ...movements, 
+      sections: [
+        ...movements.sections,
+        {
+          title,
+          data: filteredMovements
+          
+        }
+      ]
+    })
 
     const discardedMovements = movements.allMovements.filter(movement => {
       const movementDate = getDate(movement);
