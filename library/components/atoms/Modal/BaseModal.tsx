@@ -11,7 +11,7 @@ import {
 import Text from '../../Text/Text';
 import useThemedStyles from '../../../hooks/useThemedStyles';
 import type {BaseModalProps} from '../../types';
-import Icon from '../Icon/Icon';
+import Icon from '../../../../src/assets/Account/Close';
 import type {ThemeContextType} from '../../../themes/types';
 const BaseModal = (props: BaseModalProps) => {
   const {
@@ -82,12 +82,7 @@ const BaseModal = (props: BaseModalProps) => {
                   <TouchableOpacity
                     onPress={onCloseHandler}
                     style={themedStyle.iconCloseTouchable}>
-                    <Icon
-                      name="icon-close"
-                      testID={`${testID}-close-button`}
-                      // eslint-disable-next-line react-native/no-inline-styles
-                      iconTypographyStyle={{fontSize: 20}}
-                    />
+                    <Icon size={16} />
                   </TouchableOpacity>
                 </View>
               )}
@@ -163,7 +158,7 @@ const styles = (theme: ThemeContextType) =>
       height: '100%',
       alignItems: 'flex-start',
       justifyContent: 'flex-start',
-      marginTop: 12,
+      marginTop: 16,
       minHeight: 36,
     },
   });

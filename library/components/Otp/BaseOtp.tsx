@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect, ReactElement } from 'react';
-import { View, StyleSheet, TextInput, Text, Animated } from 'react-native';
+import React, {useState, useRef, useEffect, ReactElement} from 'react';
+import {View, StyleSheet, TextInput, Text, Animated} from 'react-native';
 import useThemedStyles from '../../hooks/useThemedStyles';
-import type { ThemeContextType } from '../../theme/types';
+import type {ThemeContextType} from '../../theme/types';
 import DoneBtn from '../atoms/DoneBtn';
 import Cursor from './Cursor';
 
@@ -106,7 +106,7 @@ const BaseOtp: React.FC<IBaseOtpProps> = ({
         ref={inputRef}
         value={otp}
         style={styles.otp}
-        onKeyPress={(e) => e.preventDefault()}
+        onKeyPress={e => e.preventDefault()}
         keyboardType="number-pad"
         onChangeText={handleOtpChange}
         textContentType="oneTimeCode"
@@ -142,6 +142,7 @@ const themedStyle = (theme: ThemeContextType) => ({
       fontWeight: '500',
       position: 'absolute',
       width: '100%',
+      maxWidth: '100%',
       height: '100%',
       opacity: 0,
     },
@@ -161,7 +162,7 @@ const themedStyle = (theme: ThemeContextType) => ({
       height: 86,
       borderRadius: 7,
       borderWidth: 1,
-      marginRight: 6,
+      marginRight: 10,
       marginBottom: 6,
       backgroundColor: 'white',
       borderColor: theme.colors.stroke_primary,

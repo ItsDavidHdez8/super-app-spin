@@ -71,11 +71,11 @@ inputAccessoryAction?: () => void;
 ## Ejemplo de uso
 
 ```js
-import React, { useRef, useState } from 'react';
-import { TextInput } from '@digitaltitransversal/tr_superapp_theme';
+import React, {useRef, useState} from 'react';
+import {TextInput} from '@digitaltitransversal/tr_superapp_theme';
 
 export default function App() {
-  const inputRef = useRef<TextInput>(null);
+  const inputRef = useRef < TextInput > null;
   const [numericTextInput, setNumericTextInput] = useState('');
   const [isValid, setIsValid] = useState([]);
 
@@ -104,9 +104,9 @@ export default function App() {
 # Ejemplo phone, transparente y sección izquierda
 
 ```js
-import React, { useState } from 'react';
-import { Image } from 'react-native';
-import { TextInput } from '@digitaltitransversal/tr_superapp_theme';
+import React, {useState} from 'react';
+import {Image} from 'react-native';
+import {TextInput} from '@digitaltitransversal/tr_superapp_theme';
 
 const flag = '../assets/bandera.png';
 
@@ -149,13 +149,12 @@ export default function App() {
 # Ejemplo TextInput con InputAccessoryView
 
 ```js
-import React, { useState } from 'react';
-import { Image } from 'react-native';
-import { TextInput } from '@digitaltitransversal/tr_superapp_theme';
+import React, {useState} from 'react';
+import {Image} from 'react-native';
+import {TextInput} from '@digitaltitransversal/tr_superapp_theme';
 
 export default function App() {
   const [textInput, setTextInput] = useState('');
-
 
   return (
     <TextInput

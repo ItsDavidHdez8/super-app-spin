@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 export const benefitsStyles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    paddingHorizontal: 15,
     paddingTop: 60,
     backgroundColor: '#fff',
   },
@@ -20,7 +20,7 @@ export const benefitsStyles = StyleSheet.create({
     lineHeight: 24,
     fontWeight: '500',
     fontFamily: 'Poppins',
-    marginBottom: 10,
+    marginBottom: 60,
     letterSpacing: 0.6,
   },
 
@@ -29,6 +29,7 @@ export const benefitsStyles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
+    marginBottom: -10,
   },
 
   titlePoints: {
@@ -36,8 +37,9 @@ export const benefitsStyles = StyleSheet.create({
     lineHeight: 32,
     fontWeight: '800',
     fontFamily: 'Poppins',
-    marginBottom: 12,
+    marginBottom: 8,
     letterSpacing: 0.5,
+    marginTop: -15,
   },
 
   tagPoints: {
@@ -56,16 +58,6 @@ export const benefitsStyles = StyleSheet.create({
     marginLeft: 1,
     marginRight: 15,
     height: 145,
-  },
-
-  lineSeparator: {
-    width: 1000,
-    borderColor: '#E6E6EC',
-    height: 1,
-    borderWidth: 1,
-    marginBottom: 25,
-    marginLeft: -20,
-    marginRight: 100,
   },
 
   scrolls: {

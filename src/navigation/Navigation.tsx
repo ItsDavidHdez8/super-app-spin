@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
+import {TouchableOpacity, View, Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Home} from '../screens/Home';
 import {Benefits} from '../screens/Benefits';
@@ -10,9 +11,15 @@ import HomeTabNotFocusedIcon from '../assets/Home/HomeTabNotFocused';
 import BenefitsTabIcon from '../assets/Home/BenefitsTab';
 import BenefitsTabNotFocusedIcon from '../assets/Home/BenefitsTabNotFocused';
 import WalletTabIcon from '../assets/Home/WalletTab';
+import AccountTabNotFocusedIcon from '../assets/Home/AccountTabNotFocused';
 import AccountTabIcon from '../assets/Home/AccountTab';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ChangePoints from '../screens/ChangePoints';
+import {Balance} from '../screens/Balance';
+import NavBar from '../../library/components/NavBar/NavBar';
+import {useCustomNavigation} from '../hooks/useCustomNavigation';
+import {IMAGES} from '../utils/constants';
+import CreateAccount from '../screens/CreateAccount';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -91,7 +98,12 @@ export const Navigation = () => {
           },
           tabBarLabel: 'Cuenta',
           headerShown: false,
-          tabBarIcon: () => <AccountTabIcon size={24} />,
+          tabBarIcon: ({focused}) =>
+            !focused ? (
+              <AccountTabIcon size={60} />
+            ) : (
+              <AccountTabNotFocusedIcon size={60} />
+            ),
         }}
       />
     </Tab.Navigator>
@@ -99,6 +111,8 @@ export const Navigation = () => {
 };
 
 export const Navigator = () => {
+  const navigation = useCustomNavigation();
+
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -109,7 +123,74 @@ export const Navigator = () => {
       <Stack.Screen
         name="ChangePoints"
         component={ChangePoints}
-        options={{headerShown: false}}
+        options={{
+          header: () => (
+            <NavBar
+              variant={'primary'}
+              title={'Cambia tus puntos'}
+              leftSection={
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <Image source={IMAGES.leftArrow} />
+                  </TouchableOpacity>
+                </View>
+              }
+            />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="Balance"
+        component={Balance}
+        options={{
+          header: () => (
+            <NavBar
+              variant={'primary'}
+              title={'Cambia tus puntos'}
+              leftSection={
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <Image source={IMAGES.leftArrow} />
+                  </TouchableOpacity>
+                </View>
+              }
+            />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="CreateAccount"
+        component={CreateAccount}
+        options={{
+          header: () => (
+            <NavBar
+              variant={'primary'}
+              title={'Cambia tus puntos'}
+              leftSection={
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <Image source={IMAGES.leftArrow} />
+                  </TouchableOpacity>
+                </View>
+              }
+            />
+          ),
+        }}
       />
     </Stack.Navigator>
   );
