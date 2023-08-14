@@ -10,3 +10,8 @@ export interface History {
 export interface HistoryState {
   history: History[];
 }
+
+export interface HistorySection {
+  title: string,
+  data : History[]
+}

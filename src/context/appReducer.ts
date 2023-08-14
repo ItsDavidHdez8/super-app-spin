@@ -1,7 +1,7 @@
 import {History, HistoryState} from '../interfaces/history';
 
 type AppAction = 
-| {type: 'getHistory'; payload: History}
+| {type: 'getHistory'; payload: History[]}
 
 
 export const appReducer = (state: HistoryState, action: AppAction) : HistoryState => {
@@ -9,7 +9,7 @@ export const appReducer = (state: HistoryState, action: AppAction) : HistoryStat
     case 'getHistory':
       return {
         ...state,
-        history: [...state.history, action.payload],
+        history: [...state.history, ...action.payload],
       };
 
     default:

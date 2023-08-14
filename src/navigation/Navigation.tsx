@@ -11,12 +11,17 @@ import BenefitsTabIcon from '../assets/Home/BenefitsTab';
 import BenefitsTabNotFocusedIcon from '../assets/Home/BenefitsTabNotFocused';
 import WalletTabIcon from '../assets/Home/WalletTab';
 import AccountTabIcon from '../assets/Home/AccountTab';
+import { HomeNavigationParamsList } from '../interfaces/navigation';
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<HomeNavigationParamsList>();
 
 export const Navigation = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName="Home">
       <Tab.Screen
         component={Home}
         name="Home"

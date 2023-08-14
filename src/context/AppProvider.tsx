@@ -8,7 +8,6 @@ export const INITIAL_STATE: HistoryState = {
   history: [],
 };
 
-console.log(INITIAL_STATE);
 interface AppProviderProps {
   children: JSX.Element | JSX.Element[];
 }
