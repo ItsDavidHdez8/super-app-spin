@@ -15,6 +15,9 @@ import {HomeNavigationParamsList, RootStackParamsList} from '../interfaces/navig
 import {IMAGES} from '../utils/constants';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { BottomTabNavigationProp, BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import {useCustomNavigation} from '../hooks/useCustomNavigation';
+import {LineSeparator} from '../components/LineSeparator/LineSeparator';
+
 
 type Props = CompositeScreenProps<
   BottomTabScreenProps<HomeNavigationParamsList, "Beneficios">,
@@ -24,7 +27,6 @@ type Props = CompositeScreenProps<
 export const Benefits = ({route, navigation} : Props) => {
   const {appState} = useContext(AppContext);
 
-  console.log(appState);
   const value: string = '156.00';
 
   return (
@@ -124,12 +126,7 @@ export const Benefits = ({route, navigation} : Props) => {
             />
           </ScrollView>
         </CardBenefit>
-        <View
-          style={[
-            benefitsStyles.lineSeparator,
-            {marginBottom: 5, marginTop: 10},
-          ]}
-        />
+        <LineSeparator style={{marginBottom: 5, marginTop: 10}} />
         <CardBenefit
           images={IMAGES}
           title="Suma al comprar"
@@ -156,7 +153,7 @@ export const Benefits = ({route, navigation} : Props) => {
             />
           </ScrollView>
         </CardBenefit>
-        <View style={benefitsStyles.lineSeparator} />
+        <LineSeparator />
         <View>
           <ScrollView horizontal={true} style={benefitsStyles.scrolls}>
             <Image

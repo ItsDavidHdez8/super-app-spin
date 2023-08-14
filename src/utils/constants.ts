@@ -5,4 +5,6 @@ export const IMAGES = {
   volarisLogo: require('../assets/ChangePoints/Volaris.png'),
   smartFitLogo: require('../assets/ChangePoints/SmartFit.png'),
   vixLogo: require('../assets/ChangePoints/Vix.png'),
+  spinLogoAccount: require('../assets/Account/SpinPlusLogo.png'),
+  leftArrow: require('../assets/Balance/LeftIcon.png'),
 };

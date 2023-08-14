@@ -54,6 +54,7 @@ const styles = (theme: ThemeContextType) =>
     text: {
       color: 'white',
       textAlign: 'center',
+      fontWeight: '600',
     },
     invertedButton: {
       backgroundColor: theme.colors.inverse_content_primary,

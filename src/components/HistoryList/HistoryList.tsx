@@ -15,7 +15,7 @@ interface Props {
 
 export const HistoryList = ({movements}: Props) => {
 
-  const {getMovementsInSections} = useHistoryList({movements})
+  const {getMovementsInSections, getIcon} = useHistoryList({movements})
 
   return (
     <View style={{flex: 1}}>
@@ -26,6 +26,7 @@ export const HistoryList = ({movements}: Props) => {
             supportText={item.date}
             infoLabel={`+ ${item.points}`}
             onPress={() => console.log('')}
+            icon={getIcon(item.entity)}
           />
         )}
         sections={getMovementsInSections()}
