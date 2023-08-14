@@ -15,3 +15,9 @@ export interface HistorySection {
   title: string,
   data : History[]
 }
+
+export interface HistoryListState {
+  step : number,
+  allMovements : History[],
+  sections : HistorySection[]
+}

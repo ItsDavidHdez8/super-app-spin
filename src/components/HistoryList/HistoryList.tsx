@@ -15,7 +15,7 @@ interface Props {
 
 export const HistoryList = ({movements}: Props) => {
 
-  const {getMovementsInSections, getIcon} = useHistoryList({movements})
+  const {getMovementsInSections, getIcon} = useHistoryList({allMovements : movements})
 
   return (
     <View style={{flex: 1}}>

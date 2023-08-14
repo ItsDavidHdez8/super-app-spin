@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {History, HistorySection} from '../interfaces/history';
-import { ImageRequireSource } from 'react-native';
+import {ImageRequireSource} from 'react-native';
 
 const months: {[key: string]: number} = {
   JAN: 0,
@@ -17,7 +17,32 @@ const months: {[key: string]: number} = {
   Dec: 11,
 };
 
-export const useHistoryList = ({movements}: {movements: History[]}) => {
+export const useHistoryList = ({allMovements}: {allMovements: History[]}) => {
+  const [movements, setMovements] = useState({
+    step: 0,
+    allMovements,
+    sections : []
+  });
+
+  useEffect(() => {
+    getMovementsInSections()
+  }, [movements]);
+
+  // const getMovementsInSections : () => HistorySection[] = () => {
+  //   switch (movements.step) {
+  //     case 0:
+
+
+  //       break;
+
+  //     case 2:
+  //       break;
+
+  //     default:
+  //       break;
+  //   }
+  // }
+
   const getMovementsInSections: () => HistorySection[] = () => {
     const todayItems = getFilteredMovements(new Date());
     const yesterday = new Date();
@@ -52,42 +77,59 @@ export const useHistoryList = ({movements}: {movements: History[]}) => {
     return getFilteredMovements(startWeek, today);
   };
 
+  const getMonths = (entity: History) => {};
+
   const getFilteredMovements = (startDate: Date, endDate?: Date) => {
-    const filteredMovements = movements.filter(movement => {
-      const splitMovement = movement.date.split(' ');
-      const movementDate = new Date(
-        parseInt(splitMovement[3]),
-        months[splitMovement[1]],
-        parseInt(splitMovement[2]),
-      );
-      console.log(movementDate);
-      console.log(startDate);
+    const filteredMovements = movements.allMovements.filter(movement => {
+      const movementDate = getDate(movement);
       return endDate
         ? movementDate >= startDate && movementDate <= endDate
         : movementDate.toDateString() === new Date().toDateString();
     });
+
+    const discardedMovements = movements.allMovements.filter(movement => {
+      const movementDate = getDate(movement);
+      return endDate
+      ? movementDate < startDate && movementDate > endDate
+      : movementDate.toDateString() !== new Date().toDateString();
+    });
+
+    setMovements({
+      ...movements,
+      step: movements.step + 1,
+      allMovements : discardedMovements
+    });
     return filteredMovements;
   };
 
-  const getIcon  = (entity: string) => {
-    let currentIcon : ImageRequireSource | undefined = undefined;
+  const getDate = (movement: History) => {
+    const splitMovement = movement.date.split(' ');
+    const movementDate = new Date(
+      parseInt(splitMovement[3]),
+      months[splitMovement[1]],
+      parseInt(splitMovement[2]),
+    );
+    return movementDate;
+  };
+
+  const getIcon = (entity: string) => {
+    let currentIcon: ImageRequireSource | undefined = undefined;
     switch (entity) {
       case 'Oxxo Gas':
         currentIcon = require('../assets/entities/oxxogas.png');
-        break
+        break;
       case 'Oxxo':
         currentIcon = require('../assets/entities/oxxo.png');
-        break
+        break;
       case 'Recuperación de tus puntos':
         currentIcon = require('../assets/entities/spin.png');
-        break
+        break;
       case 'Enviaste puntos':
         currentIcon = require('../assets/entities/spin.png');
-        break
+        break;
       case 'Recuperación de tus puntos':
         currentIcon = require('../assets/entities/points.png');
-        break
-
+        break;
     }
     return currentIcon;
   };
